@@ -1,11 +1,13 @@
 package co.com.choucair.certification.retofinancial.tasks;
 
-import co.com.choucair.certification.retofinancial.userinterface.RecordUserPage;
+import co.com.choucair.certification.retofinancial.userinterface.RecordUtestPage;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.DoubleClick;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.actions.SelectFromOptions;
 
 public class Record implements Task {
     private String user;
@@ -14,37 +16,43 @@ public class Record implements Task {
         this.user = user;
     }
 
-    public static Record the(String user) { return Tasks.instrumented(Record.class,user);}
+    public static Record the(String user) {
+        return Tasks.instrumented(Record.class, user);
+    }
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(Click.on(RecordUserPage.CLICK_FIRST_NAME),
-        Enter.theValue("enter first name").into(RecordUserPage.INPUT_FIRST_NAME),
-                Enter.theValue("enter last name").into(RecordUserPage.INPUT_LAST_NAME),
-                Enter.theValue("enter email").into(RecordUserPage.INPUT_EMAIL),
-               Click.on(RecordUserPage.SELECT_MONTH),
-                Click.on(RecordUserPage.SELECT_DAY),
-                Click.on(RecordUserPage.SELECT_YEAR),
-                Click.on(RecordUserPage.CLICK_BUTTON_LOCATION),
-                Enter.theValue("enter city").into(RecordUserPage.INPUT_CITY),
-                Enter.theValue("enter zip code").into(RecordUserPage.INPUT_ZIP_CODE),
-                Enter.theValue("enter city").into(RecordUserPage.INPUT_CITY),
-                Enter.theValue("select country").into(RecordUserPage.SELECT_COUNTRY),
-                Enter.theValue("click on the devices button").into(RecordUserPage.CLICK_BUTTON_DEVICES),
-                Enter.theValue("select computer").into(RecordUserPage.SELECT_COMPUTER),
-                Enter.theValue("select version").into(RecordUserPage.SELECT_VERSION),
-                Enter.theValue("select language").into(RecordUserPage.SELECT_LENGUAGE),
-                Enter.theValue("select model mobil").into(RecordUserPage.SELECT_MODEL),
-                Enter.theValue("select Operating System").into(RecordUserPage.SELECT_OS),
-                Click.on(RecordUserPage.CLICK_BUTTON_LAST_STEP),
-                Enter.theValue("create a password").into(RecordUserPage.INPUT_CREATE_PASSWORD),
-                Enter.theValue("confirm password").into(RecordUserPage.INPUT_CONFIRM_PASSWORD),
-                Click.on(RecordUserPage.CLICK_STAY_INFORMED),
-                Click.on(RecordUserPage.CLICK_ON_USER_TERMS),
-                Click.on(RecordUserPage.CLICK_ACCEPT_POLICIES),
-                Click.on(RecordUserPage.CLICK_BUTTON_COMPLETE_SETUP),
-                Click.on(RecordUserPage.CORRECT_RECORD)
+        actor.attemptsTo(Click.on(RecordUtestPage.INPUT_FIRSTNAME),
+                Enter.theValue("Fernando").into(RecordUtestPage.INPUT_FIRSTNAME),
+                Enter.theValue("Villa Alvarez").into(RecordUtestPage.INPUT_LASTNAME),
+                Enter.theValue("fvillaa2@hotmail.com").into(RecordUtestPage.INPUT_EMAIL),
+                SelectFromOptions.byVisibleText("October").from(RecordUtestPage.SELECT_MONTH),
+                SelectFromOptions.byVisibleText("12").from(RecordUtestPage.SELECT_DAY),
+                SelectFromOptions.byVisibleText("1982").from(RecordUtestPage.SELECT_YEAR),
+                Click.on(RecordUtestPage.CLICK_BUTTON_LOCATION),
+                //Enter.theValue("Pereira").into(RecordUtestPage.SELECT_CITY),
+                // Enter.theValue("660000").into(RecordUtestPage.INPUT_POSTALCODE),
+                //Click.on(RecordUtestPage.CLICK_BUTTON_DEVICES),
+                DoubleClick.on(RecordUtestPage.CLICK_BUTTON_DEVICES),
+                Click.on(RecordUtestPage.CLICK_SELECT_BRAND),
+                Click.on(RecordUtestPage.INPUT_SELECT_BRAND),
+                Click.on(RecordUtestPage.CLICK_SELECT_MODEL),
+                Click.on(RecordUtestPage.INPUT_SELECT_MODEL),
+                Click.on(RecordUtestPage.CLICK_SELECT_OS),
+                Click.on(RecordUtestPage.INPUT_SELECT_OS),
+                Click.on(RecordUtestPage.CLICK_BUTTON_LAST_STEP),
+                Enter.theValue("Poiuytre155**").into(RecordUtestPage.INPUT_CREATE_PASSWORD),
+                Enter.theValue("Poiuytre155**").into(RecordUtestPage.INPUT_CONFIRM_PASSWORD),
+                Click.on(RecordUtestPage.CLICK_STAY_INFORMED),
+                Click.on(RecordUtestPage.CLICK_ON_USER_TERMS),
+                Click.on(RecordUtestPage.CLICK_ACCEPT_POLICIES),
+                Click.on(RecordUtestPage.CLICK_BUTTON_COMPLETE_SETUP),
+                Click.on(RecordUtestPage.CORRECT_RECORD)
 
-                );
+        );
     }
 }
+
+
+
+

@@ -11,11 +11,10 @@ public class Access implements Task {
         return Tasks.instrumented(Access.class);
     }
 
+
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(Click.on(AccessUtestPage.ACCESS_BUTTON)
+        actor.attemptsTo(Click.on(AccessUtestPage.ACCESS_BUTTON));
 
-
-        );
     }
 }
